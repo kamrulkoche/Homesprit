@@ -64,6 +64,7 @@ describe('dashboard navigation', () => {
   it('hides staff management from agents', () => {
     expect(navFor('agent').map((i) => i.href)).not.toContain('/admin/users');
     expect(navFor('admin').map((i) => i.href)).toContain('/admin/users');
+    expect(navFor('agent').map((i) => i.href)).toContain('/admin/account');
   });
 
   it('lights the most specific matching link', () => {

@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useId, useState } from 'react';
 import { CheckCircle2, Send } from 'lucide-react';
 import { fieldErrors, inquirySchema } from '@/helpers/validation/inquiry.schema';
@@ -141,6 +142,12 @@ export function InquiryForm({ propertySlug, defaultMessage = '', submitLabel = '
         <Send size={16} aria-hidden="true" />
         {status === 'sending' ? 'Sending…' : submitLabel}
       </button>
+      <p className="text-center text-xs text-ink-muted dark:text-slate-400">
+        We use your details only to reply.{' '}
+        <Link href="/privacy" className="font-semibold underline hover:text-ink dark:hover:text-white">
+          Privacy policy
+        </Link>
+      </p>
     </form>
   );
 }

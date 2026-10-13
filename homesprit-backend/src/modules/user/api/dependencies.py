@@ -5,6 +5,10 @@ from sqlalchemy.orm import Session
 
 from src.shared.infrastructure.database import get_db
 
+from ..application.use_cases.account_use_cases import (
+    ChangePasswordUseCase,
+    UpdateAccountUseCase,
+)
 from ..application.use_cases.user_use_cases import (
     CreateUserUseCase,
     GetUserUseCase,
@@ -31,3 +35,17 @@ def get_create_user_use_case(db: Session = Depends(get_db)) -> CreateUserUseCase
 def get_update_user_use_case(db: Session = Depends(get_db)) -> UpdateUserUseCase:
     """Get the update-user use case with the shared DB session."""
     return UpdateUserUseCase(db)
+
+
+def get_update_account_use_case(
+    db: Session = Depends(get_db),
+) -> UpdateAccountUseCase:
+    """Get the self-service profile use case with the shared DB session."""
+    return UpdateAccountUseCase(db)
+
+
+def get_change_password_use_case(
+    db: Session = Depends(get_db),
+) -> ChangePasswordUseCase:
+    """Get the self-service password use case with the shared DB session."""
+    return ChangePasswordUseCase(db)

@@ -3,10 +3,11 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X } from 'lucide-react';
+import { Heart, Menu, X } from 'lucide-react';
 import { cn } from '@/helpers/utils/utils';
 import { Logo } from '../Logo';
 import { ThemeToggle } from '../ThemeToggle';
+import { useSavedHomes } from '@/shared/hooks/useSavedHomes';
 
 /**
  * Public site navigation.
@@ -18,12 +19,15 @@ const NAV_LINKS = [
   { href: '/properties?listing_type=sale', label: 'Buy' },
   { href: '/properties?listing_type=rent', label: 'Rent' },
   { href: '/properties', label: 'All homes' },
+  { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ] as const;
 
 export function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const { slugs: saved } = useSavedHomes();
+  const savedLabel = saved.length ? `Saved homes (${saved.length})` : 'Saved homes';
 
   const isActive = (href: string) => {
     const path = href.split('?')[0];
@@ -53,8 +57,26 @@ export function Navbar() {
         </ul>
 
         <div className="flex items-center gap-1">
+          <Link
+            href="/saved"
+            aria-label={savedLabel}
+            title={savedLabel}
+            aria-current={pathname === '/saved' ? 'page' : undefined}
+            className="relative grid h-10 w-10 place-items-center rounded-full text-ink hover:bg-ink/5 dark:text-white dark:hover:bg-white/10"
+          >
+            <Heart size={19} aria-hidden="true" className={cn(saved.length > 0 && 'fill-accent-clay text-accent-clay')} />
+            {saved.length > 0 && (
+              <span
+                aria-hidden="true"
+                className="absolute -right-0.5 -top-0.5 grid h-5 min-w-5 place-items-center rounded-full bg-accent-clay px-1 text-[0.65rem] font-bold text-white"
+              >
+                {saved.length}
+              </span>
+            )}
+          </Link>
           <ThemeToggle />
-          <Link href="/properties" className="btn-primary hidden sm:inline-flex">
+          {/* Hidden between md and lg, where the five inline links need the room. */}
+          <Link href="/properties" className="btn-primary hidden sm:inline-flex md:hidden lg:inline-flex">
             Find a home
           </Link>
           <button

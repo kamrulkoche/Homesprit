@@ -84,8 +84,9 @@ class UserUpdateSchema(BaseModel):
     """
     A partial update. Omitted keys are left alone.
 
-    `password` here is an admin RESETTING someone's password — there is no
-    self-service password change in v1.
+    `password` here is an admin RESETTING someone's password. A user changing
+    their own goes through `/admin/account/password` (`account_schema.py`),
+    which requires the current one.
     """
 
     model_config = ConfigDict(str_strip_whitespace=True)

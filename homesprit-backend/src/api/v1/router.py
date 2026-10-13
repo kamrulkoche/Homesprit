@@ -29,6 +29,7 @@ from ...modules.property.api.routes.property_routes import (
 from ...modules.property.api.routes.public_property_routes import (
     router as property_public_router,
 )
+from ...modules.user.api.routes.account_routes import router as account_router
 from ...modules.user.api.routes.user_routes import router as user_admin_router
 
 api_router = APIRouter(prefix="/api/v1")
@@ -41,6 +42,7 @@ api_router.include_router(dashboard_router, prefix="/admin/dashboard")
 api_router.include_router(property_admin_router, prefix="/admin/properties")
 api_router.include_router(inquiry_admin_router, prefix="/admin/inquiries")
 api_router.include_router(user_admin_router, prefix="/admin/users")
+api_router.include_router(account_router, prefix="/admin/account")
 
 # Public — anonymous, consumed by homesprit-frontend
 api_router.include_router(property_public_router, prefix="/public/properties")

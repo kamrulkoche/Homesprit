@@ -191,3 +191,11 @@ login_limiter = RateLimiter(limit=5, window_seconds=15 * 60, name="auth:login")
 #: minutes per address: more than a visitor asking about a few homes needs,
 #: few enough that a script cannot flood an agent's inbox.
 inquiry_limiter = RateLimiter(limit=5, window_seconds=10 * 60, name="public:inquiry")
+
+#: Limiter for a signed-in user changing their own password. Keyed by user id:
+#: the caller is authenticated, so this bounds guessing the CURRENT password
+#: from a session someone left open — the same five-per-quarter-hour budget a
+#: sign-in gets.
+password_change_limiter = RateLimiter(
+    limit=5, window_seconds=15 * 60, name="account:password"
+)

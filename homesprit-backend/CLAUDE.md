@@ -32,7 +32,8 @@ src/modules/<name>/    api/{routes,dependencies.py} · application/{schemas,use_
 src/shared/            kernel ported from hgs-backend
 ```
 
-Modules: `user` (staff accounts, admin-only routes), `auth` (login/me/logout),
+Modules: `user` (staff accounts: admin-only `/admin/users`, plus self-service
+`/admin/account` for any staff member acting on themselves), `auth` (login/me/logout),
 `property` (listings + images; admin router and public router in separate
 files), `inquiry` (public submit + scoped inbox), `dashboard` (counts, no tables).
 

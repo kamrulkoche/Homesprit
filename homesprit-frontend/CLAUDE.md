@@ -47,3 +47,8 @@ Env: `.env.local` with `HOMESPRIT_BACKEND_URL` (server-only). Next 16: read
 - Listing photos render through `shared/components/ListingImage`, which
   optimises only `images.unsplash.com` and serves other hosts `unoptimized`.
 - No `(marketing)/loading.tsx`: it would turn `notFound()` 404s into 200s.
+- Saved homes: `helpers/properties/saved-homes.ts` owns the cookie format;
+  `shared/hooks/useSavedHomes` is the one browser store (navbar badge, every
+  heart, `/saved`). `/saved` reads the cookie server-side — no client fetches.
+- FAQ and legal copy live in `faq.data.ts` / `legal.data.ts` and describe real
+  behaviour; change them when the behaviour changes.

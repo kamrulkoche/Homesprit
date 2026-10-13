@@ -25,7 +25,7 @@ import { BACKEND_URL, SESSION_COOKIE } from '@/services/admin.service';
  * Path prefixes this proxy forwards, relative to `/api/v1/admin`. Blast
  * radius, not the boundary — the backend authorizes every request itself.
  */
-const ALLOWED_PREFIXES = ['dashboard', 'properties', 'inquiries', 'users'];
+const ALLOWED_PREFIXES = ['dashboard', 'properties', 'inquiries', 'users', 'account'];
 
 const ALLOWED_METHODS = new Set(['GET', 'POST', 'PATCH', 'DELETE']);
 

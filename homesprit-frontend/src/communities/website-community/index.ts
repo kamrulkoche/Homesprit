@@ -19,3 +19,7 @@ export { PropertyCard } from './components/propertylist/PropertyCard';
 export { PropertyDetail } from './components/propertydetail/PropertyDetail';
 export { InquiryForm } from './components/propertydetail/InquiryForm';
 export { ContactPage } from './components/contact/ContactPage';
+export { AboutPage } from './components/about/AboutPage';
+export { FaqPage } from './components/faq/FaqPage';
+export { LegalPage } from './components/legal/LegalPage';
+export { SavedHomesPage } from './components/saved/SavedHomesPage';

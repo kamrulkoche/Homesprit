@@ -12,10 +12,19 @@ export const dynamic = 'force-dynamic';
  */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = siteConfig.url;
-  const routes: MetadataRoute.Sitemap = ['', '/properties', '/contact'].map((path) => ({
+  // `/saved` is left out: it is different for every visitor and noindex.
+  const routes: MetadataRoute.Sitemap = [
+    { path: '', changeFrequency: 'daily', priority: 1 },
+    { path: '/properties', changeFrequency: 'daily', priority: 0.8 },
+    { path: '/contact', changeFrequency: 'monthly', priority: 0.8 },
+    { path: '/about', changeFrequency: 'monthly', priority: 0.6 },
+    { path: '/faq', changeFrequency: 'monthly', priority: 0.5 },
+    { path: '/privacy', changeFrequency: 'yearly', priority: 0.2 },
+    { path: '/terms', changeFrequency: 'yearly', priority: 0.2 },
+  ].map(({ path, changeFrequency, priority }) => ({
     url: `${base}${path}`,
-    changeFrequency: 'daily',
-    priority: path === '' ? 1 : 0.8,
+    changeFrequency: changeFrequency as 'daily' | 'monthly' | 'yearly',
+    priority,
   }));
 
   const listings: MetadataRoute.Sitemap = [];

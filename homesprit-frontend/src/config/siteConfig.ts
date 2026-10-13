@@ -12,6 +12,7 @@ export const siteConfig = {
   email: 'hello@homesprit.dev',
   phone: '+1 512 555 0100',
   address: '500 Congress Ave, Austin, TX 78701',
+  hours: 'Mon–Sat, 9am – 6pm',
   /** Every price and date on the site is formatted with these. */
   locale: 'en-US',
   currency: 'USD',

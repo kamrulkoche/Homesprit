@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { Building2, ExternalLink, Inbox, LayoutDashboard, LogOut, Menu, Users, X } from 'lucide-react';
+import { Building2, CircleUser, ExternalLink, Inbox, LayoutDashboard, LogOut, Menu, Users, X } from 'lucide-react';
 import { cn } from '@/helpers/utils/utils';
 import { USER_ROLE_LABELS } from '@/helpers/properties/labels';
 import { Logo } from '@/shared/components/Logo';
@@ -17,6 +17,7 @@ const ICONS: Record<NavIcon, typeof LayoutDashboard> = {
   properties: Building2,
   inquiries: Inbox,
   users: Users,
+  account: CircleUser,
 };
 
 interface AdminShellProps {
@@ -27,7 +28,7 @@ interface AdminShellProps {
 
 /**
  * Sidebar + header around every signed-in dashboard page — hgs-frontend's
- * AdminShell, trimmed to Homesprit's four screens.
+ * AdminShell, trimmed to Homesprit's five screens.
  *
  * It also owns the toast region, so any screen can confirm a save with
  * `useToast()`. It lives here rather than in `(admin)/layout.tsx` because the
@@ -137,10 +138,13 @@ export function AdminShell({ user, children }: AdminShellProps) {
           </button>
           <div className="ml-auto flex items-center gap-2">
             <ThemeToggle />
-            <div className="hidden text-right sm:block">
-              <p className="text-sm font-bold leading-tight text-ink dark:text-white">{user.name}</p>
-              <p className="text-xs text-ink-muted dark:text-slate-400">{USER_ROLE_LABELS[user.role]}</p>
-            </div>
+            <Link
+              href="/admin/account"
+              className="hidden rounded-lg px-2 py-1 text-right hover:bg-ink/5 dark:hover:bg-white/10 sm:block"
+            >
+              <span className="block text-sm font-bold leading-tight text-ink dark:text-white">{user.name}</span>
+              <span className="block text-xs text-ink-muted dark:text-slate-400">{USER_ROLE_LABELS[user.role]}</span>
+            </Link>
             <button type="button" onClick={signOut} disabled={isSigningOut} className="btn-ghost px-3">
               <LogOut size={17} aria-hidden="true" />
               <span className="hidden sm:inline">{isSigningOut ? 'Signing out…' : 'Sign out'}</span>

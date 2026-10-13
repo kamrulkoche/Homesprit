@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Bath, BedDouble, MapPin, Ruler } from 'lucide-react';
 import { ListingImage } from '@/shared/components/ListingImage';
+import { SaveHomeButton } from '@/shared/components/SaveHomeButton';
 import { coverImage } from '@/helpers/properties/images';
 import { LISTING_TYPE_LABELS, PROPERTY_TYPE_LABELS } from '@/helpers/properties/labels';
 import { formatNumber, formatPrice, plural } from '@/helpers/utils/format';
@@ -41,6 +42,7 @@ export function PropertyCard({ property, priority }: PropertyCardProps) {
           </span>
           <ListingStatusPill status={property.status} />
         </div>
+        <SaveHomeButton slug={property.slug} title={property.title} className="absolute right-3 top-3" />
       </div>
 
       <div className="flex flex-1 flex-col gap-3 p-5">

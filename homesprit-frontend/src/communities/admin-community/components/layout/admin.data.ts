@@ -8,7 +8,7 @@
 
 import type { UserRole } from '@/interface/admin.interface';
 
-export type NavIcon = 'dashboard' | 'properties' | 'inquiries' | 'users';
+export type NavIcon = 'dashboard' | 'properties' | 'inquiries' | 'users' | 'account';
 
 export interface NavItem {
   href: string;
@@ -26,6 +26,7 @@ export const NAV_ITEMS: readonly NavItem[] = [
   { href: '/admin/properties', label: 'Listings', icon: 'properties', roles: ['admin', 'agent'] },
   { href: '/admin/inquiries', label: 'Inquiries', icon: 'inquiries', roles: ['admin', 'agent'] },
   { href: '/admin/users', label: 'Team', icon: 'users', roles: ['admin'] },
+  { href: '/admin/account', label: 'My account', icon: 'account', roles: ['admin', 'agent'] },
 ];
 
 /**

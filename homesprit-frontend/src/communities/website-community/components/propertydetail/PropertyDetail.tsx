@@ -22,6 +22,7 @@ import {
 } from '@/helpers/properties/labels';
 import { formatDate, formatNumber, formatPrice } from '@/helpers/utils/format';
 import type { IProperty } from '@/interface/property.interface';
+import { SaveHomeButton } from '@/shared/components/SaveHomeButton';
 import { ListingStatusPill } from '../propertylist/ListingStatusPill';
 import { InquiryForm } from './InquiryForm';
 import { PropertyGallery } from './PropertyGallery';
@@ -49,10 +50,13 @@ export function PropertyDetail({ property }: { property: IProperty }) {
 
   return (
     <div className="container-page py-8 md:py-12">
-      <Link href="/properties" className="btn-ghost -ml-3 mb-6 px-3">
-        <ArrowLeft size={16} aria-hidden="true" />
-        All homes
-      </Link>
+      <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+        <Link href="/properties" className="btn-ghost -ml-3 px-3">
+          <ArrowLeft size={16} aria-hidden="true" />
+          All homes
+        </Link>
+        <SaveHomeButton slug={property.slug} title={property.title} variant="button" />
+      </div>
 
       <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_380px]">
         <div className="min-w-0 space-y-10">

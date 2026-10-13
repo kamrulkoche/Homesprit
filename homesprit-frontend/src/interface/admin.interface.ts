@@ -3,6 +3,8 @@
  *
  * Hand-mirrored from homesprit-backend:
  *   IUser               <- modules/user/application/schemas/user_schema.py
+ *   IAccountUpdate,
+ *   IPasswordChange     <- modules/user/application/schemas/account_schema.py
  *   IDashboardResponse  <- modules/dashboard/application/schemas/dashboard_schema.py
  * The envelope and pagination shapes are the ones hgs-frontend declares, because
  * the backend kernel that produces them is the same.
@@ -34,6 +36,18 @@ export interface IUserWrite {
   role: UserRole;
   status?: UserStatus;
   password?: string;
+}
+
+/** `AccountUpdateSchema` — what a user may change about themselves. */
+export interface IAccountUpdate {
+  name?: string;
+  phone?: string | null;
+}
+
+/** `PasswordChangeSchema`. */
+export interface IPasswordChange {
+  current_password: string;
+  new_password: string;
 }
 
 /** `PropertyCountsSchema`. */

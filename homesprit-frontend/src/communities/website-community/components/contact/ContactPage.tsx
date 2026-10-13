@@ -13,7 +13,7 @@ export function ContactPage() {
     { icon: Mail, label: 'Email', value: siteConfig.email, href: `mailto:${siteConfig.email}` },
     { icon: Phone, label: 'Phone', value: siteConfig.phone, href: `tel:${siteConfig.phone.replace(/\s/g, '')}` },
     { icon: MapPin, label: 'Office', value: siteConfig.address, href: null },
-    { icon: Clock, label: 'Hours', value: 'Mon–Sat, 9am – 6pm', href: null },
+    { icon: Clock, label: 'Hours', value: siteConfig.hours, href: null },
   ];
 
   return (

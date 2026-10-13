@@ -14,3 +14,4 @@ export { AdminPropertiesPage } from './components/properties/AdminPropertiesPage
 export { AdminPropertyEditPage } from './components/properties/AdminPropertyEditPage';
 export { AdminInquiriesPage } from './components/inquiries/AdminInquiriesPage';
 export { AdminUsersPage } from './components/users/AdminUsersPage';
+export { AdminAccountPage } from './components/account/AdminAccountPage';

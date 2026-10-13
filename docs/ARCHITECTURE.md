@@ -129,6 +129,9 @@ names as its own upstream.
 | Admin dashboard | `dashboard` | `/admin/dashboard` |
 | Property CRUD | `property` (admin router) | `/admin/properties`, `/new`, `/[id]` |
 | Inquiry management | `inquiry` (public write + admin inbox) | inquiry form on detail + `/contact`; `/admin/inquiries` |
+| Self-service account | `user` (`/admin/account`, `/admin/account/password` — caller only, current password required, rate limited) | `/admin/account` |
+| Saved homes | — (no visitor accounts) | `homesprit_saved` cookie of slugs, read server-side by `/saved`; heart on every card |
+| About, FAQ, privacy, terms | — | `/about` (live counts), `/faq` (+ FAQPage JSON-LD), `/privacy`, `/terms`; copy in `*.data.ts` |
 | PostgreSQL | Alembic migrations, native enums, `text[]` | — |
 | REST integration | `/api/v1/public/*`, `/api/v1/admin/*`, `/api/v1/auth/*` | server readers + route-handler proxies |
 | Validation + errors | Pydantic + domain exceptions | Zod in route handlers; `AdminApiError.fields` in forms |

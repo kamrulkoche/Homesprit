@@ -31,6 +31,7 @@ from src.shared.infrastructure.security.password_hasher import hash_password
 from src.shared.infrastructure.security.rate_limiter import (
     inquiry_limiter,
     login_limiter,
+    password_change_limiter,
 )
 
 TEST_PASSWORD = "integration-test-password"
@@ -125,6 +126,7 @@ def client(db_session: Session) -> Generator[TestClient, None, None]:
     """
     login_limiter._windows.clear()
     inquiry_limiter._windows.clear()
+    password_change_limiter._windows.clear()
 
     app = create_app()
 
